@@ -71,6 +71,22 @@
             .intro img { width: 120px; }
         }
 
+        .contact-card { align-self: start; min-width: 0; margin-top: 36px; padding: 32px; background: #fffdf8; box-shadow: 0 12px 28px -16px #302c354d; transform-origin: center; transition: transform 280ms cubic-bezier(.16, 1, .3, 1); }
+        .contact-card h2 { margin: 0 0 24px; font-size: 27px; }
+        .contact-card h3 { margin: 24px 0 12px; padding-top: 20px; border-top: 1px solid var(--rule); }
+        .contact-card p { margin-bottom: 0; }
+        .contact-card:focus-visible { transform: perspective(1000px) rotateX(2deg) rotateY(-3deg) rotate(-.6deg) translateY(-2px); }
+        @media (hover: hover) and (pointer: fine) {
+            .contact-card:hover { transform: perspective(1000px) rotateX(2deg) rotateY(-3deg) rotate(-.6deg) translateY(-2px); }
+        }
+        @media (max-width: 760px) {
+            .contact-card { margin-top: 24px; padding: 28px; }
+        }
+        @media (max-width: 420px) { .contact-card { padding: 24px; } }
+        @media (prefers-reduced-motion: reduce) {
+            .contact-card, .contact-card:hover, .contact-card:focus-visible { transform: none; transition: none; }
+        }
+
     </style>
 </head>
 <body>
@@ -104,8 +120,8 @@
                 <h3>Tianli (Lily) Shi — Assistance Dog Trainer</h3>
                 <p>Lily's role works with dogs on their tasks and records their progress. She also helps clients and volunteers learn how to work with the dogs.</p>
             </section>
-            <section>
-                <h2>Sample contact details</h2>
+            <section class="contact-card" tabindex="0" aria-labelledby="contact-title">
+                <h2 id="contact-title">Sample contact details</h2>
                 <address>
                     <p><strong>Email:</strong> hello@paals-project.example<br>
                     <strong>Phone:</strong> (803) 555-0142<br>
