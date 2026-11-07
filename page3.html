@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAALS | About &amp; Contact</title>
+    <!-- Author: Sawyer Shoemaker | Date: November 7, 2026 -->
+    <!--
+    AI assistance: ChatGPT drafted the HTML, CSS, and text and helped optimize the site (November 7, 2026).
+    Sources: PAALS. (n.d.). About. https://www.paals.org/about
+    PAALS. (n.d.). [Assistance dog photograph]. https://static.wixstatic.com/media/f01312_60827aacac5b4eb5867ec77ee65cde47f000.png
+    -->
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; background: #ffffff; color: #29252e; font-family: Arial, sans-serif; font-size: 17px; line-height: 1.6; }
+        header { background: #4b3278; color: white; }
+        .header-content { max-width: 1000px; margin: auto; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .site-name { margin: 0; font-size: 26px; font-weight: bold; }
+        .site-name a { color: white; text-decoration: none; }
+        nav { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+        nav a { display: inline-flex; align-items: center; min-height: 44px; color: white; padding: 8px 0; text-decoration: none; }
+        nav a:hover, nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; }
+        nav a[aria-current="page"] { font-weight: bold; }
+        main { max-width: 1000px; margin: auto; padding: 40px 24px 48px; }
+        h1 { font-size: 34px; line-height: 1.2; margin: 0 0 16px; color: #4b3278; }
+        h2 { font-size: 23px; line-height: 1.3; margin: 30px 0 10px; }
+        h3 { font-size: 18px; margin: 20px 0 6px; }
+        p { margin: 0 0 16px; max-width: 70ch; }
+        a { color: #4b3278; text-underline-offset: 3px; }
+        a:focus-visible { outline: 3px solid #b26812; outline-offset: 5px; }
+        header a:focus-visible { outline-color: #ffffff; }
+        .skip-link { position: absolute; left: 16px; top: 8px; z-index: 1; padding: 8px 12px; background: white; transform: translateY(-150%); }
+        .skip-link:focus { transform: translateY(0); }
+        img { display: block; width: 100%; height: auto; }
+        .intro { display: grid; grid-template-columns: minmax(0, 1fr) 150px; align-items: center; gap: 32px; margin-bottom: 28px; }
+        ul, ol { padding-left: 24px; margin: 8px 0 16px; }
+        li { margin-bottom: 6px; }
+        .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+        address { font-style: normal; overflow-wrap: anywhere; }
+        ::selection { background: #e7dff3; color: #29252e; }
+        @media (max-width: 680px) {
+            .header-content { align-items: flex-start; flex-direction: column; gap: 6px; padding: 14px 20px; }
+            nav { gap: 4px 18px; font-size: 16px; }
+            main { padding: 28px 20px 36px; }
+            h1 { font-size: 29px; }
+            .columns { grid-template-columns: 1fr; gap: 20px; }
+            .intro { grid-template-columns: 1fr 100px; gap: 16px; }
+            .intro h1 { font-size: 27px; }
+            .columns { gap: 0; }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header>
+        <div class="header-content">
+            <p class="site-name"><a href="index.html">PAALS</a></p>
+            <nav aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="page2.html">Services</a>
+                <a href="page3.html" aria-current="page">About &amp; Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main id="main" tabindex="-1">
+        <div class="intro">
+            <div>
+                <h1>About &amp; Contact</h1>
+                <h2>Our story</h2>
+                <p>PAALS started in 2006 to help people live more independently through assistance dogs. Based in Columbia, it brings together trainers, staff, and volunteers to support people with disabilities.</p>
+            </div>
+            <img src="images/paals-dog-300.webp"
+                 srcset="images/paals-dog-150.webp 150w, images/paals-dog-300.webp 300w, images/paals-dog-600.webp 600w"
+                 sizes="(max-width: 680px) 100px, 150px" width="600" height="600" decoding="async" fetchpriority="high" alt="Black assistance dog wearing its PAALS vest">
+        </div>
+        <div class="columns">
+            <section>
+                <h2>Our project team</h2>
+                <h3>Sawyer Shoemaker — IT Support Specialist</h3>
+                <p>Sawyer's role handles the computers, staff accounts, and backups. He helps keep training records organized and available to the people who need them.</p>
+                <h3>Tianli (Lily) Shi — Assistance Dog Trainer</h3>
+                <p>Lily's role works with dogs on their tasks and records their progress. She also helps clients and volunteers learn how to work with the dogs.</p>
+            </section>
+            <section>
+                <h2>Sample contact details</h2>
+                <address>
+                    <p><strong>Email:</strong> hello@paals-project.example<br>
+                    <strong>Phone:</strong> (803) 555-0142<br>
+                    <strong>Location:</strong> 100 Training Lane, Columbia, SC<br>
+                    <strong>Social:</strong> @paals_class_project</p>
+                </address>
+                <h3>Sample hours</h3>
+                <p>Monday–Friday: 9 a.m.–5 p.m.<br>Saturday–Sunday: Closed</p>
+            </section>
+        </div>
+        <section>
+            <h2>Frequently asked questions</h2>
+            <h3>What does an assistance dog do?</h3>
+            <p>An assistance dog learns tasks that help a person with disabilities in daily life.</p>
+            <h3>Is this the official PAALS website?</h3>
+            <p>No. This is an ITEC 101 class project based on PAALS.</p>
+        </section>
+    </main>
+</body>
+</html>

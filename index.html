@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAALS | Home</title>
+    <!-- Author: Sawyer Shoemaker | Date: November 7, 2026 -->
+    <!--
+    AI assistance: ChatGPT drafted the HTML, CSS, and text and helped optimize the site (November 7, 2026).
+    Sources: PAALS. (n.d.). Home. https://www.paals.org/
+    PAALS. (n.d.). Programs. https://www.paals.org/programs
+    PAALS. (n.d.). [Assistance dog photograph]. https://static.wixstatic.com/media/f01312_60827aacac5b4eb5867ec77ee65cde47f000.png
+    -->
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; background: #ffffff; color: #29252e; font-family: Arial, sans-serif; font-size: 17px; line-height: 1.6; }
+        header { background: #4b3278; color: white; }
+        .header-content { max-width: 1000px; margin: auto; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .site-name { margin: 0; font-size: 26px; font-weight: bold; }
+        .site-name a { color: white; text-decoration: none; }
+        nav { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+        nav a { display: inline-flex; align-items: center; min-height: 44px; color: white; padding: 8px 0; text-decoration: none; }
+        nav a:hover, nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; }
+        nav a[aria-current="page"] { font-weight: bold; }
+        main { max-width: 1000px; margin: auto; padding: 40px 24px 48px; }
+        h1 { font-size: 34px; line-height: 1.2; margin: 0 0 16px; color: #4b3278; }
+        h2 { font-size: 23px; line-height: 1.3; margin: 30px 0 10px; }
+        p { margin: 0 0 16px; max-width: 70ch; }
+        a { color: #4b3278; text-underline-offset: 3px; }
+        a:focus-visible { outline: 3px solid #b26812; outline-offset: 5px; }
+        header a:focus-visible { outline-color: #ffffff; }
+        .skip-link { position: absolute; left: 16px; top: 8px; z-index: 1; padding: 8px 12px; background: white; transform: translateY(-150%); }
+        .skip-link:focus { transform: translateY(0); }
+        img { display: block; width: 100%; height: auto; }
+        .hero { display: grid; grid-template-columns: minmax(0, 1fr) 300px; align-items: center; gap: 40px; }
+        .tagline { font-size: 22px; margin-top: 0; }
+        .button { display: inline-block; background: #4b3278; color: white; padding: 10px 20px; text-decoration: none; }
+        .button:hover { background: #342153; }
+        ul, ol { padding-left: 24px; margin: 8px 0 16px; }
+        li { margin-bottom: 6px; }
+        ::selection { background: #e7dff3; color: #29252e; }
+        @media (max-width: 680px) {
+            .header-content { align-items: flex-start; flex-direction: column; gap: 6px; padding: 14px 20px; }
+            nav { gap: 4px 18px; font-size: 16px; }
+            main { padding: 28px 20px 36px; }
+            h1 { font-size: 29px; }
+            .hero { grid-template-columns: 1fr; gap: 20px; }
+            .hero img { max-width: 250px; margin: 10px auto 0; }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header>
+        <div class="header-content">
+            <p class="site-name"><a href="index.html">PAALS</a></p>
+            <nav aria-label="Main navigation">
+                <a href="index.html" aria-current="page">Home</a>
+                <a href="page2.html">Services</a>
+                <a href="page3.html">About &amp; Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main id="main" tabindex="-1">
+        <section class="hero">
+            <div>
+                <h1>Palmetto Animal Assisted Life Services</h1>
+                <h2 class="tagline">More independence, one dog at a time.</h2>
+                <p>PAALS is a nonprofit in Columbia, South Carolina, that trains assistance dogs for people with disabilities. It also offers educational and recreational activities that help people learn and connect through working with dogs.</p>
+                <a class="button" href="page2.html">Explore Our Services</a>
+            </div>
+            <img src="images/paals-dog-300.webp"
+                 srcset="images/paals-dog-150.webp 150w, images/paals-dog-300.webp 300w, images/paals-dog-600.webp 600w"
+                 sizes="(max-width: 680px) 250px, 300px" width="600" height="600" decoding="async" fetchpriority="high" alt="Black Labrador wearing a purple PAALS service-dog vest">
+        </section>
+        <section>
+            <h2>What we offer</h2>
+            <ul>
+                <li><strong>Assistance dogs:</strong> Training that helps dogs support people with daily tasks.</li>
+                <li><strong>Reading PAALS:</strong> Reading practice with a calm dog.</li>
+                <li><strong>School PAALS:</strong> Activities that teach students about assistance dogs and teamwork.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Our mission</h2>
+            <p>Help children and adults with disabilities live more independently through trained dogs and animal-assisted activities.</p>
+        </section>
+    </main>
+</body>
+</html>
