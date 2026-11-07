@@ -6,48 +6,80 @@
     <title>PAALS | About &amp; Contact</title>
     <!-- Author: Sawyer Shoemaker | Date: November 7, 2026 -->
     <!--
-    AI assistance: ChatGPT drafted the HTML, CSS, and text and helped optimize the site (November 7, 2026).
+    AI assistance: ChatGPT drafted the HTML, CSS, and text and helped optimize the site and create text artwork (November 7, 2026).
     Sources: PAALS. (n.d.). About. https://www.paals.org/about
     PAALS. (n.d.). [Assistance dog photograph]. https://static.wixstatic.com/media/f01312_60827aacac5b4eb5867ec77ee65cde47f000.png
+    Font: Vercel. Geist. https://github.com/vercel/geist-font (OFL-1.1).
     -->
     <style>
+        @font-face { font-family: "Geist Sans"; src: url("fonts/geist-sans-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+        :root { --paper: #f7f4ed; --ink: #302c35; --purple: #4b3278; --muted: #625b69; --rule: #d7d0dc; --focus: #9a5510; }
         * { box-sizing: border-box; }
-        body { margin: 0; background: #ffffff; color: #29252e; font-family: Arial, sans-serif; font-size: 17px; line-height: 1.6; }
-        header { background: #4b3278; color: white; }
-        .header-content { max-width: 1000px; margin: auto; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-        .site-name { margin: 0; font-size: 26px; font-weight: bold; }
-        .site-name a { color: white; text-decoration: none; }
-        nav { display: flex; flex-wrap: wrap; gap: 6px 22px; }
-        nav a { display: inline-flex; align-items: center; min-height: 44px; color: white; padding: 8px 0; text-decoration: none; }
-        nav a:hover, nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; }
-        nav a[aria-current="page"] { font-weight: bold; }
-        main { max-width: 1000px; margin: auto; padding: 40px 24px 48px; }
-        h1 { font-size: 34px; line-height: 1.2; margin: 0 0 16px; color: #4b3278; }
-        h2 { font-size: 23px; line-height: 1.3; margin: 30px 0 10px; }
-        h3 { font-size: 18px; margin: 20px 0 6px; }
-        p { margin: 0 0 16px; max-width: 70ch; }
-        a { color: #4b3278; text-underline-offset: 3px; }
-        a:focus-visible { outline: 3px solid #b26812; outline-offset: 5px; }
-        header a:focus-visible { outline-color: #ffffff; }
-        .skip-link { position: absolute; left: 16px; top: 8px; z-index: 1; padding: 8px 12px; background: white; transform: translateY(-150%); }
-        .skip-link:focus { transform: translateY(0); }
+        html { scrollbar-color: #b4a6c4 var(--paper); }
+        body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.65 Arial, sans-serif; }
+        a { color: var(--purple); text-underline-offset: 4px; }
+        a:focus-visible, [tabindex="0"]:focus-visible { outline: 2px solid var(--focus); outline-offset: 6px; }
+        header { max-width: 1240px; margin: auto; padding: 0 36px; }
+        .header-content { padding: 20px 0; min-height: 96px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--rule); }
+        .site-name { margin: 0; font: 500 29px/1 "Geist Sans", Arial, sans-serif; letter-spacing: -.025em; }
+        .site-name a { text-decoration: none; }
+        nav { display: flex; flex-wrap: wrap; gap: 4px 30px; font-size: 15px; }
+        nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; color: var(--muted); }
+        nav a:hover, nav a[aria-current="page"] { color: var(--purple); text-decoration: underline; text-underline-offset: 7px; }
+        nav a[aria-current="page"] { font-weight: 700; }
+        main { max-width: 1240px; margin: auto; padding: 64px 36px 64px; }
+        h1, h2 { font-family: "Geist Sans", Arial, sans-serif; font-weight: 500; color: var(--purple); }
+        h1 { font-size: 56px; line-height: 1.08; letter-spacing: -.035em; margin: 0 0 24px; text-wrap: balance; }
+        h2 { font-size: 29px; line-height: 1.2; letter-spacing: -.025em; margin: 36px 0 16px; }
+        h3 { font-size: 18px; line-height: 1.4; margin: 24px 0 10px; }
+        p { margin: 0 0 20px; max-width: 70ch; }
         img { display: block; width: 100%; height: auto; }
-        .intro { display: grid; grid-template-columns: minmax(0, 1fr) 150px; align-items: center; gap: 32px; margin-bottom: 28px; }
-        ul, ol { padding-left: 24px; margin: 8px 0 16px; }
-        li { margin-bottom: 6px; }
-        .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+        ul, ol { padding-left: 22px; margin: 12px 0 20px; }
+        li { margin-bottom: 8px; }
+        ::selection { background: #e2d7ed; color: var(--ink); }
+        .skip-link { position: absolute; top: 8px; left: 16px; z-index: 10; background: var(--paper); padding: 10px 16px; transform: translateY(-160%); }
+        .skip-link:focus { transform: none; }
+        .intro { display: grid; grid-template-columns: minmax(0, 1fr) 260px; align-items: center; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--rule); }
+        .intro h2 { margin-top: 32px; }
+        .services { margin: 32px 0 56px; }
+        .service { padding: 28px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 240px 1fr; column-gap: 48px; }
+        .service h2 { margin: 0; grid-row: span 2; }
+        .service p, .service ul { margin-top: 0; margin-bottom: 10px; }
+        .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 24px; }
+        .steps li { padding-left: 4px; }
+        .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; padding: 8px 0 20px; }
         address { font-style: normal; overflow-wrap: anywhere; }
-        ::selection { background: #e7dff3; color: #29252e; }
-        @media (max-width: 680px) {
-            .header-content { align-items: flex-start; flex-direction: column; gap: 6px; padding: 14px 20px; }
-            nav { gap: 4px 18px; font-size: 16px; }
-            main { padding: 28px 20px 36px; }
-            h1 { font-size: 29px; }
-            .columns { grid-template-columns: 1fr; gap: 20px; }
-            .intro { grid-template-columns: 1fr 100px; gap: 16px; }
-            .intro h1 { font-size: 27px; }
-            .columns { gap: 0; }
+        @media (max-width: 760px) {
+            header { padding: 0 22px; }
+            .header-content { padding: 16px 0; min-height: 88px; gap: 12px; }
+            .site-name { font-size: 26px; }
+            nav { gap: 3px 17px; font-size: 14px; }
+            main { padding: 38px 22px 48px; }
+            h1 { font-size: 40px; }
+            h2 { font-size: 27px; }
+            .intro { grid-template-columns: minmax(0, 1fr) 100px; gap: 20px; padding-bottom: 28px; }
+            .intro h1 { font-size: 36px; }
+            .columns, .steps { grid-template-columns: 1fr; gap: 8px; }
+            .service { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
+            .service h2 { grid-row: auto; }
+            .services { margin-bottom: 36px; }
         }
+        @media (max-width: 420px) {
+            .header-content { align-items: flex-start; flex-direction: column; gap: 5px; }
+            nav { gap: 4px 24px; }
+            .intro { grid-template-columns: 1fr; }
+            .intro img { width: 120px; }
+        }
+
+        .portrait { width: 100%; max-width: 230px; aspect-ratio: 1; margin: 0; position: relative; container-type: inline-size; }
+        .portrait img { width: 100%; height: 100%; object-fit: contain; transition: opacity 350ms ease-out; }
+        .portrait pre { position: absolute; inset: 0; margin: 0; font: 400 2.38095238cqi/1 "Courier New", monospace; color: #56376e; white-space: pre; opacity: 0; transition: opacity 350ms ease-out; }
+        .portrait:is(:hover, :focus-visible) img { opacity: 0; }
+        .portrait:is(:hover, :focus-visible) pre { opacity: 1; }
+        @media (max-width: 760px) { .intro { grid-template-columns: minmax(0, 1fr) 180px; } }
+        @media (max-width: 520px) { .intro { grid-template-columns: 1fr; } .portrait { max-width: 180px; } }
+        @media (prefers-reduced-motion: reduce) { .portrait img, .portrait pre { transition: none; } }
+
     </style>
 </head>
 <body>
@@ -69,9 +101,50 @@
                 <h2>Our story</h2>
                 <p>PAALS started in 2006 to help people live more independently through assistance dogs. Based in Columbia, it brings together trainers, staff, and volunteers to support people with disabilities.</p>
             </div>
-            <img src="images/paals-dog-300.webp"
+            <figure class="portrait" tabindex="0" aria-label="PAALS assistance dog. Hover or focus to reveal a text portrait." title="View as text art"><img src="images/paals-dog-300.webp"
                  srcset="images/paals-dog-150.webp 150w, images/paals-dog-300.webp 300w, images/paals-dog-600.webp 600w"
-                 sizes="(max-width: 680px) 100px, 150px" width="600" height="600" decoding="async" fetchpriority="high" alt="Black assistance dog wearing its PAALS vest">
+                 sizes="(max-width: 520px) 180px, 230px" width="600" height="600" decoding="async" fetchpriority="high" alt="Black assistance dog wearing its PAALS vest"><pre aria-hidden="true">
+
+                                                   sX33ssrrrrsss
+                                                  sX33XXX33XX3M3X
+                                                XXshhXsXhMhXsX3333
+                                              XsXXXhh333X33srrrsX33
+                                             XXXXXX3M3333XsssrssXX3
+                                              XXX3XXh33333XsX3hh3s33
+                                               3hXXXhh33333X3hhh333
+                                              srXss3MM3hh33hhh33h33
+                                            XsXis33hMMhh3Xh3XXXsX 3
+                                           XXXX3rXMMMMhhh33XssssX
+                                         ssXXXs3hss3MMMMhhhh3hh3
+                                       rsXsXXXXhhhX3333hMhhhhMh3
+                                      sssssXsX33hMMh333333h33hh
+                                     ssXXssXXX333h3XXXhh333XX
+                                    sssX3XsXXXsXX33XXhhMMMMhX
+                                   sX3XXXXXXXXXXXXX333hhh3hXs
+                                 ssX3XX3XXXXXXXX3XXXX33333hXXs
+                                ssXXsris3rsXXXXXssssssXXsX3sXXX
+                               ssX3:i:ii::r3XX3XXXXXX3h333333X33
+                             XXsXX3Xrri:iXXXXXXXXh3X3h3hhh333X
+                            XXXXXX33i:is3XXXXXXX3333333hhhh
+                           3XXXXXX33rs333XXX333333333hhhh33
+                          X333XXXX3X333XXX33XX33X3hhhhhhh3
+                         XXXXXXXXXXXXX333hhh333h333hhhhhh3
+                        XXXXXXXXXXX33hhhMMMMh3XXhh3hMMMhhh
+                       X3333X33XXXX3hhhhMMMMhXXX3h3hMhhh333
+                       X3333X3XXX333333hMMMMM3XX333hh Mh333
+                      333333333h33hX3hhhhhhM3XX3h33    h3333
+                      333h333hhhh3hhhhMMMh33hh33h33    Mh333
+   3333333333         33hMMhh333333hhhMMhh33hh33333     M3333
+    X333333XXXXX3X3Xs3hhhhhhhh333X3hh3hh333333h3333      h3X3
+           X33XX3333X3hhXX33hhhhhh3h33X333h33hh3333      M333
+                       hX3hhhhhhhh3h33X        33333      hh33
+                        3hhhh333h              h3333        333hh3
+                       333hh33hh3X             h3333         33h333
+                          h33X3333333           h3X3
+                                 3333           hXX33
+                                                 333hh3
+                                                 333h333
+</pre></figure>
         </div>
         <div class="columns">
             <section>

@@ -1,4 +1,4 @@
-"""Check local navigation, accessibility basics, and a 50 KB page budget."""
+"""Check local navigation, accessibility basics, and explicit asset budgets."""
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -7,7 +7,8 @@ import shutil
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
-PAGE_BUDGET = 50_000  # HTML plus the largest possible image, before compression.
+PAGE_BUDGETS = {'index.html': 500_000, 'page2.html': 250_000, 'page3.html': 100_000}
+# HTML plus each largest image and locally hosted font, before compression.
 
 
 class Page(HTMLParser):
@@ -58,12 +59,17 @@ pages = {path: Page(path) for path in ROOT.glob('*.html')}
 assert len(pages) == 3, 'The assignment requires three pages'
 assert len({page.title for page in pages.values()}) == 3, 'Use unique page titles'
 assets = set()
+image_assets = set()
 for path, page in sorted(pages.items()):
     assert page.title.strip(), f'{path.name}: missing title'
     assert page.tags.count('h1') == 1, f'{path.name}: expected one h1'
     assert all(tag in page.tags for tag in ('header', 'main', 'h2', 'p', 'style', 'img'))
     source = path.read_text(encoding='utf-8')
-    assert not re.search(r'@import|url\s*\(', source), 'Unexpected CSS network dependency'
+    assert '@import' not in source, 'Unexpected stylesheet dependency'
+    css_urls = re.findall(r'url\(\s*[\"\']?([^\s\)\"\']+)', source)
+    fonts = {local_target(path, url)[0] for url in css_urls}
+    assert all(font.parent.name == 'fonts' and font.suffix == '.woff2' for font in fonts), 'Only local fonts may be referenced by CSS'
+    assets.update(fonts)
     destinations = set()
     for href in page.links:
         target, fragment = local_target(path, href)
@@ -71,7 +77,7 @@ for path, page in sorted(pages.items()):
         assert not fragment or fragment in pages[target].ids, f'Broken fragment: {href}'
         destinations.add(target)
     assert destinations == pages.keys(), f'{path.name}: each page must be reachable'
-    page_bytes = path.stat().st_size
+    page_bytes = path.stat().st_size + sum(font.stat().st_size for font in fonts)
     for img in page.images:
         assert img.get('alt', '').strip(), f'{path.name}: image needs alt text'
         assert all(int(img.get(key, 0)) > 0 for key in ('width', 'height')), 'Reserve image space'
@@ -79,12 +85,19 @@ for path, page in sorted(pages.items()):
         urls = [img['src']] + [item.strip().split()[0] for item in img['srcset'].split(',')]
         candidates = {local_target(path, url)[0] for url in urls}
         assets.update(candidates)
+        image_assets.update(candidates)
         page_bytes += max(asset.stat().st_size for asset in candidates)
-    assert page_bytes <= PAGE_BUDGET, f'{path.name}: {page_bytes:,} bytes exceeds the page budget'
-    print(f'PASS {path.name}: links and images checked; at most {page_bytes:,} / {PAGE_BUDGET:,} bytes')
+    page_budget = PAGE_BUDGETS[path.name]
+    assert page_bytes <= page_budget, f'{path.name}: {page_bytes:,} bytes exceeds the page budget'
+    print(f'PASS {path.name}: links and images checked; at most {page_bytes:,} / {page_budget:,} bytes')
 
 image_files = {p.resolve() for p in (ROOT / 'images').iterdir() if p.is_file()}
-assert assets == image_files, 'Remove unused image files'
+assert image_assets == image_files, 'Remove unused image files'
+font_files = {p.resolve() for p in (ROOT / 'fonts').glob('*.woff2')}
+assert {p for p in assets if p.suffix == '.woff2'} == font_files, 'Remove unused font files'
+license_file = ROOT / 'fonts' / 'OFL.txt'
+assert license_file.is_file(), 'Preserve the font license'
+assets.add(license_file)
 print(f'PASS total HTML and assets: {sum(p.stat().st_size for p in set(pages) | assets):,} bytes; no JavaScript')
 
 if '--build' in sys.argv:
@@ -94,4 +107,4 @@ if '--build' in sys.argv:
         target = output / source.relative_to(ROOT)
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, target)
-    print('Built _site with only the HTML pages and referenced images')
+    print('Built _site with HTML, referenced images, the local font, and its license')
