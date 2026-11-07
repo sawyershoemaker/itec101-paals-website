@@ -71,15 +71,6 @@
             .intro img { width: 120px; }
         }
 
-        .portrait { width: 100%; max-width: 230px; aspect-ratio: 1; margin: 0; position: relative; container-type: inline-size; }
-        .portrait img { width: 100%; height: 100%; object-fit: contain; transition: opacity 350ms ease-out; }
-        .portrait pre { position: absolute; inset: 0; margin: 0; font: 400 2.38095238cqi/1 "Courier New", monospace; color: #56376e; white-space: pre; opacity: 0; transition: opacity 350ms ease-out; }
-        .portrait:is(:hover, :focus-visible) img { opacity: 0; }
-        .portrait:is(:hover, :focus-visible) pre { opacity: 1; }
-        @media (max-width: 760px) { .intro { grid-template-columns: minmax(0, 1fr) 180px; } }
-        @media (max-width: 520px) { .intro { grid-template-columns: 1fr; } .portrait { max-width: 180px; } }
-        @media (prefers-reduced-motion: reduce) { .portrait img, .portrait pre { transition: none; } }
-
     </style>
 </head>
 <body>
@@ -101,50 +92,9 @@
                 <h2>Our story</h2>
                 <p>PAALS started in 2006 to help people live more independently through assistance dogs. Based in Columbia, it brings together trainers, staff, and volunteers to support people with disabilities.</p>
             </div>
-            <figure class="portrait" tabindex="0" aria-label="PAALS assistance dog. Hover or focus to reveal a text portrait." title="View as text art"><img src="images/paals-dog-300.webp"
+            <img src="images/paals-dog-300.webp"
                  srcset="images/paals-dog-150.webp 150w, images/paals-dog-300.webp 300w, images/paals-dog-600.webp 600w"
-                 sizes="(max-width: 520px) 180px, 230px" width="600" height="600" decoding="async" fetchpriority="high" alt="Black assistance dog wearing its PAALS vest"><pre aria-hidden="true">
-
-                                                   sX33ssrrrrsss
-                                                  sX33XXX33XX3M3X
-                                                XXshhXsXhMhXsX3333
-                                              XsXXXhh333X33srrrsX33
-                                             XXXXXX3M3333XsssrssXX3
-                                              XXX3XXh33333XsX3hh3s33
-                                               3hXXXhh33333X3hhh333
-                                              srXss3MM3hh33hhh33h33
-                                            XsXis33hMMhh3Xh3XXXsX 3
-                                           XXXX3rXMMMMhhh33XssssX
-                                         ssXXXs3hss3MMMMhhhh3hh3
-                                       rsXsXXXXhhhX3333hMhhhhMh3
-                                      sssssXsX33hMMh333333h33hh
-                                     ssXXssXXX333h3XXXhh333XX
-                                    sssX3XsXXXsXX33XXhhMMMMhX
-                                   sX3XXXXXXXXXXXXX333hhh3hXs
-                                 ssX3XX3XXXXXXXX3XXXX33333hXXs
-                                ssXXsris3rsXXXXXssssssXXsX3sXXX
-                               ssX3:i:ii::r3XX3XXXXXX3h333333X33
-                             XXsXX3Xrri:iXXXXXXXXh3X3h3hhh333X
-                            XXXXXX33i:is3XXXXXXX3333333hhhh
-                           3XXXXXX33rs333XXX333333333hhhh33
-                          X333XXXX3X333XXX33XX33X3hhhhhhh3
-                         XXXXXXXXXXXXX333hhh333h333hhhhhh3
-                        XXXXXXXXXXX33hhhMMMMh3XXhh3hMMMhhh
-                       X3333X33XXXX3hhhhMMMMhXXX3h3hMhhh333
-                       X3333X3XXX333333hMMMMM3XX333hh Mh333
-                      333333333h33hX3hhhhhhM3XX3h33    h3333
-                      333h333hhhh3hhhhMMMh33hh33h33    Mh333
-   3333333333         33hMMhh333333hhhMMhh33hh33333     M3333
-    X333333XXXXX3X3Xs3hhhhhhhh333X3hh3hh333333h3333      h3X3
-           X33XX3333X3hhXX33hhhhhh3h33X333h33hh3333      M333
-                       hX3hhhhhhhh3h33X        33333      hh33
-                        3hhhh333h              h3333        333hh3
-                       333hh33hh3X             h3333         33h333
-                          h33X3333333           h3X3
-                                 3333           hXX33
-                                                 333hh3
-                                                 333h333
-</pre></figure>
+                 sizes="(max-width: 420px) 120px, (max-width: 760px) 100px, 260px" width="600" height="600" decoding="async" fetchpriority="high" alt="Black assistance dog wearing its PAALS vest">
         </div>
         <div class="columns">
             <section>

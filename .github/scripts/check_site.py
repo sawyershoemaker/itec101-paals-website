@@ -7,7 +7,7 @@ import shutil
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
-PAGE_BUDGETS = {'index.html': 500_000, 'page2.html': 250_000, 'page3.html': 100_000}
+PAGE_BUDGETS = {'index.html': 500_000, 'page2.html': 90_000, 'page3.html': 90_000}
 # HTML plus each largest image and locally hosted font, before compression.
 
 
